@@ -1,0 +1,7 @@
+OptoCollector->OptoMarkerCollector and OptoRigidBodyCollector have fatal flaws in get_position/pose.  Every time this function is called, a new frame is retrieved.  So for three calls for 3 markers, say, the caller gets the 3 marker positions at different time.  Keep them here for backward compatibility.  Use Opto3DCollector's.  Opto3D because the collectors are on the optical side, we will have OptoODAUCollector later.
+
+Tue May 20 10:19:31 EDT 2008
+The diamond shape of the class structure of the Opto3D* classes isn't ideal.  Scrap and redo.  Reuse the OptoCollector name and OptoFilteredCollector's a decorator.  OptoCollector also does what I planned as a composite collector, which can have both marker elements and rigid body elements.  Will phase out Opto3D*.  The counterpart will be named ODAUCollector, instead of OptoODAUCollector, which means that Optotrak refers to the whole system, while opto* refers to the optical part and ODAU to the ODAU part.
+
+Fri Nov 14 15:26:12 EST 2008
+Going through yet another redesign.  Decrator's not the right way.  The problem is that an OptoFilteredCollect object, taking a pointer of an OptoCollector object, doesn't have its own states (num_markers, etc) initialized.  We can copy the states from the OptoCollector object, but that's ugly because now we have a redundant set of states.
