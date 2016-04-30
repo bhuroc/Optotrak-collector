@@ -20,3 +20,8 @@ PowerShell will give the signature of the function.  If I don't remember what's 
 >$collector | Get-Members
 ```
 will give all the member functions in the class.
+
+If I want to get ten frames, do
+```Powershell
+> [1..10] | foreach {$collector.update_frame(); $collector.get_position(0)}
+```
