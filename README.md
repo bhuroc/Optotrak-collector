@@ -1,4 +1,4 @@
-A CLI/C# wrapper for Northern Digital's Optotrak system.  One of the benefits to interface the C library to CLI is to script short Optotrak sessions with Powershell.
+A CLR/C# wrapper for Northern Digital's Optotrak system.  One of the benefits to interface the C library to CLI is to script short Optotrak sessions with Powershell.
 
 ```Powershell
 > [Reflection.Assembly]::LoadFile("U:\bin\Optotrak.dll")
